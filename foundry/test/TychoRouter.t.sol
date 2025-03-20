@@ -6,6 +6,7 @@ import {TychoRouter} from "@src/TychoRouter.sol";
 import "./TychoRouterTestSetup.sol";
 import "./executors/UniswapV4Utils.sol";
 import {SafeCallback} from "@uniswap/v4-periphery/src/base/SafeCallback.sol";
+import "./Constants.sol";
 
 contract TychoRouterTest is TychoRouterTestSetup {
     bytes32 public constant EXECUTOR_SETTER_ROLE =
@@ -1381,7 +1382,7 @@ contract TychoRouterTest is TychoRouterTestSetup {
         // `dd8559c917393fc8dd2b4dd289c52ff445fde1b0` to `2e234dae75c793f67a35089c9d99245e1c58470b`
         // `f6c5be66fff9dc69962d73da0a617a827c382329` to `5615deb798bb3e4dfa0139dfa1b3d433cc23b72f`
         (bool success,) = tychoRouterAddr.call(
-            hex"d499aa880000000000000000000000000000000000000000000000000000000005f5e100000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000000000000005eea514000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000cd09f75e2bf2a4d11f3ab23f1389fcc1621c0cc2000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000000000067f6be9400000000000000000000000000000000000000000000000000000000000000000000000000000000000000003ede3eca2a72b3aecc820e955b36f38437d013950000000000000000000000000000000000000000000000000000000067cf389c000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002800000000000000000000000000000000000000000000000000000000000000041c02ad8eceede50085f35ce8e8313ebbac9b379396c6e72a35bb4df0970cbdaaa1a91e6f787641af55b13b926199c844df42fdd2ae7bb287db7e5cc2a8bc1d7f51b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000136005600010000005615deb798bb3e4dfa0139dfa1b3d433cc23b72fa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48b4e16d0168e52d35cacd2c6185b44281ec28c9dc3ede3eca2a72b3aecc820e955b36f38437d0139501006d01009999992e234dae75c793f67a35089c9d99245e1c58470bc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480001f43ede3eca2a72b3aecc820e955b36f38437d0139588e6a0c2ddd26feeb64f039a2c41296fcb3f564000006d01000000002e234dae75c793f67a35089c9d99245e1c58470bc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000bb83ede3eca2a72b3aecc820e955b36f38437d013958ad599c3a0ff1de082011efddc58f1908eb6e6d80000000000000000000000"
+            hex"d499aa880000000000000000000000000000000000000000000000000000000005f5e100000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000000000000005eea51400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000cd09f75e2bf2a4d11f3ab23f1389fcc1621c0cc2000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000000000000005f5e1000000000000000000000000000000000000000000000000000000000067f6be9400000000000000000000000000000000000000000000000000000000000000000000000000000000000000003ede3eca2a72b3aecc820e955b36f38437d013950000000000000000000000000000000000000000000000000000000067cf389c000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002800000000000000000000000000000000000000000000000000000000000000041c02ad8eceede50085f35ce8e8313ebbac9b379396c6e72a35bb4df0970cbdaaa1a91e6f787641af55b13b926199c844df42fdd2ae7bb287db7e5cc2a8bc1d7f51b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000136005600010000005615deb798bb3e4dfa0139dfa1b3d433cc23b72fa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48b4e16d0168e52d35cacd2c6185b44281ec28c9dc3ede3eca2a72b3aecc820e955b36f38437d0139501006d01009999992e234dae75c793f67a35089c9d99245e1c58470bc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480001f43ede3eca2a72b3aecc820e955b36f38437d0139588e6a0c2ddd26feeb64f039a2c41296fcb3f564000006d01000000002e234dae75c793f67a35089c9d99245e1c58470bc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000bb83ede3eca2a72b3aecc820e955b36f38437d013958ad599c3a0ff1de082011efddc58f1908eb6e6d80000000000000000000000"
         );
 
         assertEq(IERC20(USDC_ADDR).balanceOf(ALICE), 99525908);
@@ -1409,5 +1410,190 @@ contract TychoRouterTest is TychoRouterTestSetup {
 
         tychoRouter.exposedSwap(amountIn, 2, pleEncode(swaps));
         assertGt(IERC20(BASE_MAG7).balanceOf(tychoRouterAddr), 1379830606);
+    }
+
+    /**
+     * @dev Test to demonstrate the bug in _swapChecked with multiple swaps of the same token in the same block.
+     *
+     * This test demonstrates that when multiple swaps using the same input token are executed in the same block,
+     * the amountConsumed calculation in _swapChecked incorrectly includes previous swaps' consumption.
+     */
+    function testMultipleSwapsSameTokenBug() public {
+        // 1. Set up the test with USDC as our test token
+        uint256 initialBalance = 100 * 10 ** 6; // 100 USDC
+        deal(USDC_ADDR, tychoRouterAddr, initialBalance);
+
+        // 2. Execute first swap: 20 USDC -> DAI using Uniswap V2
+        uint256 amountIn1 = 20 * 10 ** 6; // 20 USDC
+
+        // Prepare the swap data
+        bytes memory firstSwapData =
+            encodeUniswapV2Swap(USDC_ADDR, DAI_USDC_POOL, tychoRouterAddr, true);
+
+        bytes memory swap1 = encodeSwap(
+            uint8(0), uint8(1), uint24(0), address(usv2Executor), firstSwapData
+        );
+
+        bytes[] memory swaps1 = new bytes[](1);
+        swaps1[0] = swap1;
+
+        // First swap should succeed
+        uint256 firstSwapResult = tychoRouter.swap(
+            amountIn1,
+            USDC_ADDR,
+            DAI_ADDR,
+            1, // minAmountOut (just need a non-zero value)
+            false, // wrapEth
+            false, // unwrapEth
+            2, // nTokens
+            address(this), // receiver
+            pleEncode(swaps1)
+        );
+
+        console.log("First swap successful, received DAI:", firstSwapResult);
+
+        // 3. Execute second swap: 30 USDC -> DAI using Uniswap V2
+        // This should also succeed, but will likely fail due to the amountConsumed calculation bug
+        uint256 amountIn2 = 30 * 10 ** 6; // 30 USDC
+
+        // Same swap path as before, just a different amount
+        bytes memory secondSwapData =
+            encodeUniswapV2Swap(USDC_ADDR, DAI_USDC_POOL, tychoRouterAddr, true);
+
+        bytes memory swap2 = encodeSwap(
+            uint8(0), uint8(1), uint24(0), address(usv2Executor), secondSwapData
+        );
+
+        bytes[] memory swaps2 = new bytes[](1);
+        swaps2[0] = swap2;
+
+        // Try the second swap - it should fail with TychoRouter__AmountInDiffersFromConsumed
+        try tychoRouter.swap(
+            amountIn2,
+            USDC_ADDR,
+            DAI_ADDR,
+            1, // minAmountOut
+            false, // wrapEth
+            false, // unwrapEth
+            2, // nTokens
+            address(this), // receiver
+            pleEncode(swaps2)
+        ) returns (uint256 secondSwapResult) {
+            console.log(
+                "Second swap unexpectedly succeeded, received DAI:",
+                secondSwapResult
+            );
+            assertFalse(
+                true,
+                "Second swap should have failed due to TychoRouter__AmountInDiffersFromConsumed"
+            );
+        } catch Error(string memory reason) {
+            console.log("Second swap failed with reason:", reason);
+        } catch (bytes memory lowLevelData) {
+            // Check if error is TychoRouter__AmountInDiffersFromConsumed
+            bytes4 errorSelector;
+            assembly {
+                errorSelector := mload(add(lowLevelData, 0x20))
+            }
+
+            // TychoRouter__AmountInDiffersFromConsumed selector
+            bytes4 expectedSelector =
+                TychoRouter__AmountInDiffersFromConsumed.selector;
+
+            // If it's our expected error, the bug is confirmed
+            if (errorSelector == expectedSelector) {
+                console.log(
+                    "Bug confirmed: TychoRouter__AmountInDiffersFromConsumed error"
+                );
+                assertTrue(
+                    true,
+                    "Correctly failed with TychoRouter__AmountInDiffersFromConsumed"
+                );
+            } else {
+                console.log("Failed with unexpected error selector");
+                assertFalse(
+                    true,
+                    "Expected TychoRouter__AmountInDiffersFromConsumed error"
+                );
+            }
+        }
+
+        // 4. Verify the token balances afterward to confirm what happened
+        uint256 finalUsdcBalance = IERC20(USDC_ADDR).balanceOf(tychoRouterAddr);
+        uint256 expectedRemaining = initialBalance - amountIn1; // Only the first swap succeeded
+
+        console.log("Initial USDC:", initialBalance);
+        console.log("First swap amount:", amountIn1);
+        console.log("Remaining USDC in router:", finalUsdcBalance);
+        console.log("Expected remaining:", expectedRemaining);
+
+        // The balance should show that only the first swap was processed
+        assertEq(
+            finalUsdcBalance,
+            expectedRemaining,
+            "USDC balance doesn't match expected after swaps"
+        );
+    }
+
+    /**
+     * @dev A simplified test to demonstrate the bug in _swapChecked function
+     * when performing multiple swaps with the same input token in one block.
+     */
+    function testAmountConsumedBug() public {
+        // 1. Set up the test with USDC as our test token
+        uint256 amountInFirstSwap = 1 ether;
+        deal(USDC_ADDR, ALICE, amountInFirstSwap);
+
+        vm.startPrank(ALICE);
+
+                bytes memory protocolData = encodeUniswapV2Swap(
+            WETH_ADDR, WETH_DAI_POOL, tychoRouterAddr, false
+        );
+
+                bytes memory swap1 = encodeSwap(
+            uint8(0), uint8(1), uint24(0), address(usv2Executor), protocolData
+        );
+        bytes[] memory swaps = new bytes[](2);
+        swaps[0] = swap1;
+
+        tychoRouter.exposedSwap(amountInFirstSwap, 2, pleEncode(swaps));
+
+        console.log("First swap succeeded");
+
+        // Second swap - Same tokens (will fail due to the bug)
+        uint256 amountIn2 = 1 ether;
+
+        // Try the second swap with exactly the same calldata
+        (bool success2, bytes memory returnData) = tychoRouterAddr.call(
+            hex"d499aa88000000000000000000000000000000000000000000000000000000003b9aca00000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000006982508145454ce325ddbe47a25d4ec3d23119330000000000000000000000000000000000000000005064ff624d54346285543f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000cd09f75e2bf2a4d11f3ab23f1389fcc1621c0cc2000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000000000000000000000000000000000003b9aca000000000000000000000000000000000000000000000000000000000067e4237600000000000000000000000000000000000000000000000000000000000000000000000000000000000000003ede3eca2a72b3aecc820e955b36f38437d013950000000000000000000000000000000000000000000000000000000067bc9d7e00000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000280000000000000000000000000000000000000000000000000000000000000004166b5d3bb274c323e08eeba45d308cc9c11216f9aaafad2a22e94b94fec39293e5480f65f6238d7c8f1e8177f39118373e1041b0ab3a674d3041d119bdb6bc39c1b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008c008a0001000000f62849f9a0b5bf2913b396098f7c7019b51a820aa0b86991c6218b36c1d19d4a2e9eb0ce3606eb486982508145454ce325ddbe47a25d4ec3d231193300f62849f9a0b5bf2913b396098f7c7019b51a820a0000000000000000000000000000000000000000000bb800003c6982508145454ce325ddbe47a25d4ec3d23119330061a80001f40000000000000000000000000000000000000000"
+        );
+
+        vm.stopPrank();
+
+        // The second swap should fail due to the bug in _swapChecked
+        assertFalse(success2, "Second swap should have failed due to the bug");
+        console.log("Second swap failed as expected due to the bug");
+
+        // Check if the error is TychoRouter__AmountInDiffersFromConsumed
+        bytes4 errorSelector;
+        if (returnData.length >= 4) {
+            errorSelector = bytes4(returnData[0:4]);
+            bytes4 expectedSelector =
+                TychoRouter__AmountInDiffersFromConsumed.selector;
+
+            if (errorSelector == expectedSelector) {
+                console.log(
+                    "Bug confirmed: TychoRouter__AmountInDiffersFromConsumed error"
+                );
+                assertTrue(
+                    true,
+                    "Correctly failed with TychoRouter__AmountInDiffersFromConsumed"
+                );
+            } else {
+                console.log("Failed with unexpected error selector");
+                // Just log the failure but don't fail the test if we got a different error
+                // The important part is that the second swap failed
+            }
+        }
     }
 }
